@@ -16,10 +16,5 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
-    "linebreak-style": ["error", "windows"],
-    "prefer-template": "off",
-    "no-trailing-spaces": "off",
-    "no-plusplus": "off",
-    "consistent-return": "off",
   },
 };

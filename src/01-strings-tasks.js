@@ -206,12 +206,12 @@ function getRectangleString(width, height) {
   const horLine = '─';
   const vertLine = '│';
   const midPart = [];
-  const topLine = '┌' + horLine.repeat(width - 2) + '┐'; 
-  const bottomLine = '└' + horLine.repeat(width - 2) + '┘';
-  for (let i = 0; i < height - 2; i++) {
+  const topLine = `┌${horLine.repeat(width - 2)}┐`;
+  const bottomLine = `└${horLine.repeat(width - 2)}┘`;
+  for (let i = 0; i < height - 2; i += 1) {
     midPart.push(vertLine + ' '.repeat(width - 2) + vertLine);
   }
-  const result = [topLine, ...midPart, bottomLine].join('\n') + '\n';
+  const result = `${[topLine, ...midPart, bottomLine].join('\n')}\n`;
   return result;
 }
 
@@ -236,7 +236,7 @@ function encodeToRot13(str) {
   const result = [];
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const ROT13 = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     const curInd = str[i];
     if (letters.includes(curInd)) {
       const Idx = letters.indexOf(curInd);

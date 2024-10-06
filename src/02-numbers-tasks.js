@@ -94,9 +94,11 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
+  let result;
   if (a !== 0) {
-    return -b / a;
+    result = -b / a;
   }
+  return result;
 }
 
 
@@ -227,7 +229,7 @@ function isPrime(n) {
   if (n === 2) {
     return true;
   }
-  for (let i = 2; i <= Math.sqrt(n); i++) {
+  for (let i = 2; i <= Math.sqrt(n); i += 1) {
     if (n % i === 0) {
       return false;
     }

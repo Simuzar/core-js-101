@@ -57,7 +57,7 @@ function getFactorial(n) {
   if (n === 0) {
     return 1;
   }
-  for (let i = n; i > 1; i--) {
+  for (let i = n; i > 1; i -= 1) {
     result *= i;
   }
   return result;
@@ -78,7 +78,7 @@ function getFactorial(n) {
  */
 function getSumBetweenNumbers(n1, n2) {
   let result = 0;
-  for (let i = n1; i <= n2; i++) {
+  for (let i = n1; i <= n2; i += 1) {
     result += i;
   }
   return result;
@@ -185,12 +185,14 @@ function isInsideCircle(/* circle, point */) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-  for (let i = 0; i < str.length; i++) {
+  let result = null;
+  for (let i = 0; i < str.length; i += 1) {
     const char = str.charAt(i);
     if (str.indexOf(char) === i && str.indexOf(char, i + 1) === -1) {
-      return char;
+      result = char;
+      break;
     }
-  }
+  } return result;
 }
 
 
@@ -235,7 +237,7 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  */
 function reverseString(str) {
   let result = '';
-  for (let i = str.length; i--;) {
+  for (let i = str.length - 1; i >= 0; i -= 1) {
     result += str[i];
   }
   return result;
@@ -257,7 +259,7 @@ function reverseString(str) {
 function reverseInteger(num) {
   let result = '';
   const number = num.toString();
-  for (let i = number.length - 1; i >= 0; i--) {
+  for (let i = number.length - 1; i >= 0; i -= 1) {
     result += number[i];
   }
   return Number(result);
@@ -287,7 +289,7 @@ function reverseInteger(num) {
  */
 function isCreditCardNumber(ccn) {
   const digitsArray = Array.from(String(ccn), Number).reverse();
-  for (let i = 0; i < digitsArray.length; i++) {
+  for (let i = 0; i < digitsArray.length; i += 1) {
     if (i % 2 !== 0) {
       let digit = digitsArray[i] * 2;
       if (digit > 9) {
@@ -321,14 +323,14 @@ function getDigitalRoot(num) {
   if (num < 9) {
     return num;
   }
-  for (let i = 0; i < numStr.length; i++) {
+  for (let i = 0; i < numStr.length; i += 1) {
     firstResult += Number(numStr[i]);
   }
   const numStrTwo = firstResult.toString();
   if (firstResult < 9) {
     return firstResult;
   }
-  for (let i = 0; i < numStrTwo.length; i++) {
+  for (let i = 0; i < numStrTwo.length; i += 1) {
     secondResult += Number(numStrTwo[i]);
   }
   return secondResult;
@@ -362,7 +364,7 @@ function isBracketsBalanced(str) {
   }
 
   const stack = [];
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     if (str[i] === '(' || str[i] === '[' || str[i] === '{' || str[i] === '<') {
       stack.push(str[i]);
     } else {
@@ -374,28 +376,28 @@ function isBracketsBalanced(str) {
         case ')':
           lastElement = stack.pop();
           if (lastElement !== '(') {
-            return false; 
+            return false;
           }
           break;
         case '}':
           lastElement = stack.pop();
           if (lastElement !== '{') {
-            return false; 
+            return false;
           }
           break;
         case ']':
           lastElement = stack.pop();
           if (lastElement !== '[') {
-            return false; 
+            return false;
           }
           break;
         case '>':
           lastElement = stack.pop();
           if (lastElement !== '<') {
-            return false; 
+            return false;
           }
           break;
-        default: 
+        default:
           throw new Error(`Unexpected input ${str[i]}`);
       }
     }
